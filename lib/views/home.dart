@@ -1,13 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:mercure/views/statistiques.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  static final channel = WebSocketChannel.connect(
+    Uri.parse('wss://ws-feed.pro.coinbase.com'),
+  );
+
+  static WebSocketChannel getChannel() {
+    return channel;
+  }
 
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
+
+  WebSocketChannel channel = Home.getChannel();
 
   //Le véhicule est en marche
   bool powerOn = false;
@@ -20,7 +32,7 @@ class _HomeState extends State<Home> {
 
   //Les différents écrans
   final List<Widget> _screens = [
-    //Ajouter les écrans
+    Statistiques(),
   ];
 
   //Allume ou éteind le véhicule
@@ -34,19 +46,13 @@ class _HomeState extends State<Home> {
   //Action déclancher lorsqu'on change de page
   void _onPageChanged(int index){
     setState(() {
-      //_selectedIndex = index;
+      _selectedIndex = index;
     });
   }
 
   //Action lorsqu'on clique sur les différents onglets de la barre de navigation
   void _onItemTapped(int selectedIndex) {
     _pageController.jumpToPage(selectedIndex);
-
-    // ****** À remettre dans le onPageChanged ******
-    setState(() {
-      _selectedIndex = selectedIndex;
-    });
-    // ****** À remettre dans le onPageChanged ******
   }
 
   @override
@@ -69,6 +75,7 @@ class _HomeState extends State<Home> {
               value: powerOn,
               onChanged: (bool value) {
                 togglePower(value);
+
               },
             activeTrackColor: Colors.lightGreen,
             activeColor: Colors.green,
@@ -106,5 +113,11 @@ class _HomeState extends State<Home> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    channel.sink.close();
+    super.dispose();
   }
 }
