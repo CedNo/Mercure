@@ -1,16 +1,22 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'home.dart';
-
 class Statistiques extends StatefulWidget {
-  const Statistiques({Key? key}) : super(key: key);
+  const Statistiques({Key? key, required this.socket}) : super(key: key);
+
+  final Socket? socket;
 
   @override
-  _StatistiquesState createState() => _StatistiquesState();
+  _StatistiquesState createState() => _StatistiquesState(socket!);
 }
 
 class _StatistiquesState extends State<Statistiques> with AutomaticKeepAliveClientMixin {
+  _StatistiquesState(Socket this.socket);
+
+  final Socket socket;
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -22,7 +28,7 @@ class _StatistiquesState extends State<Statistiques> with AutomaticKeepAliveClie
           crossAxisCount: 2,
           children: <Widget>[
             StreamBuilder(
-              stream: Home.getChannel().stream,
+              stream: socket,
               builder: (context, snapshot) {
                 /// We are waiting for incoming data data
                 if (snapshot.connectionState == ConnectionState.waiting) {
