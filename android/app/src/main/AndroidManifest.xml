@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ca.qc.cegeptr.mercure">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="mercure"
         android:name="${applicationName}"

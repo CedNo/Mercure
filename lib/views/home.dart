@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> {
   }
 
   void errorHandler(error, StackTrace trace){
-    print(error);
+    return null;
   }
 
   void doneHandler(){
@@ -77,63 +78,75 @@ class _HomeState extends State<Home> {
   }
 
   void _connectToSocket() async {
-    debugPrint("Connecting");
-    socket = await Socket.connect("192.168.0.27", 9999);
-    debugPrint("Connected");
-    socket.listen(dataHandler,
-        onError: errorHandler,
-        onDone: doneHandler,
-        cancelOnError: false);
+    log("Connecting");
 
-    setState(() {
-      screen = <Widget>[
+    try {
+      socket = await Socket.connect("192.168.0.27", 9999);
+
+      socket.listen(dataHandler,
+          onError: errorHandler,
+          onDone: doneHandler,
+          cancelOnError: false);
+
+      log("Connected");
+      log("Socket" + socket.toString());
+
+      stdin.listen((data) =>
+          socket.write(
+              String.fromCharCodes(data).trim() + '\n'));
+
+      setState(() {
+        screen = <Widget>[
           StreamBuilder(
-          stream: socket,
-          builder: (context, snapshot) {
-            /// We are waiting for incoming data data
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+            stream: socket,
+            builder: (context, snapshot) {
+              /// We are waiting for incoming data data
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
 
-            /// We have an active connection and we have received data
-            if (snapshot.connectionState == ConnectionState.active &&
-                snapshot.hasData) {
-              return Center(
-                child: Text(
-                  '${snapshot.data}}',
-                  style: const TextStyle(
-                    color: Colors.redAccent,
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
+              /// We have an active connection and we have received data
+              if (snapshot.connectionState == ConnectionState.active &&
+                  snapshot.hasData) {
+                return Center(
+                  child: Text(
+                    '${snapshot.data}}',
+                    style: const TextStyle(
+                      color: Colors.redAccent,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-              );
-            }
+                );
+              }
 
-            /// When we have closed the connection
-            if (snapshot.connectionState == ConnectionState.done) {
-              return const Center(
-                child: Text(
-                  'No more data',
-                  style: TextStyle(
-                    color: Colors.red,
+              /// When we have closed the connection
+              if (snapshot.connectionState == ConnectionState.done) {
+                return const Center(
+                  child: Text(
+                    'No more data',
+                    style: TextStyle(
+                      color: Colors.red,
+                    ),
                   ),
-                ),
+                );
+              }
+
+              /// For all other situations, we display a simple "No data"
+              /// message
+              return const Center(
+                child: Text('No data'),
               );
-            }
-
-            /// For all other situations, we display a simple "No data"
-            /// message
-            return const Center(
-              child: Text('No data'),
-            );
-          },
-        ),
-      ];
-
-    });
+            },
+          ),
+        ];
+      });
+    }
+    catch (error) {
+      log(error.toString());
+    }
   }
 
   @override
