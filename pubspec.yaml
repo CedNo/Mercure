@@ -29,8 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  web_socket_channel: ^2.1.0
   json_serializable: ^6.1.4
+  http: ^0.13.4
 
 
   # The following adds the Cupertino Icons font to your application.

@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:mercure/main.dart';
 import 'package:mercure/views/statistiques.dart';
-import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,25 +16,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  static late Socket socket;
-
-  List<Widget> screen = <Widget>[const CircularProgressIndicator()];
-
-  void dataHandler(data){
-    print(new String.fromCharCodes(data).trim());
-  }
-
-  void errorHandler(error, StackTrace trace){
-    return null;
-  }
-
-  void doneHandler(){
-    socket.destroy();
-  }
-
-  Socket getSocket() {
-    return socket;
-  }
+  late Socket socket;
 
   //Le véhicule est en marche
   bool powerOn = false;
@@ -46,8 +28,10 @@ class _HomeState extends State<Home> {
   final PageController _pageController = PageController();
 
   //Les différents écrans
-  final List<Widget> _screens = [
-
+  List<Widget> _screens = [
+    CircularProgressIndicator(),
+    CircularProgressIndicator(),
+    CircularProgressIndicator(),
   ];
 
   //Allume ou éteind le véhicule
@@ -72,79 +56,30 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    screen = <Widget>[CircularProgressIndicator()];
-
     _connectToSocket();
   }
 
   void _connectToSocket() async {
     log("Connecting");
 
-    try {
-      socket = await Socket.connect("192.168.0.27", 9999);
+    try{
 
-      socket.listen(dataHandler,
-          onError: errorHandler,
-          onDone: doneHandler,
-          cancelOnError: false);
+      socket = await Socket.connect("192.168.0.27", 65000);
 
       log("Connected");
       log("Socket" + socket.toString());
 
-      stdin.listen((data) =>
-          socket.write(
-              String.fromCharCodes(data).trim() + '\n'));
-
       setState(() {
-        screen = <Widget>[
-          StreamBuilder(
-            stream: socket,
-            builder: (context, snapshot) {
-              /// We are waiting for incoming data data
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-
-              /// We have an active connection and we have received data
-              if (snapshot.connectionState == ConnectionState.active &&
-                  snapshot.hasData) {
-                return Center(
-                  child: Text(
-                    '${snapshot.data}}',
-                    style: const TextStyle(
-                      color: Colors.redAccent,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                );
-              }
-
-              /// When we have closed the connection
-              if (snapshot.connectionState == ConnectionState.done) {
-                return const Center(
-                  child: Text(
-                    'No more data',
-                    style: TextStyle(
-                      color: Colors.red,
-                    ),
-                  ),
-                );
-              }
-
-              /// For all other situations, we display a simple "No data"
-              /// message
-              return const Center(
-                child: Text('No data'),
-              );
-            },
-          ),
+        _screens = [
+          Statistiques(socket: socket,),
+          Statistiques(socket: socket,),
+          Statistiques(socket: socket,),
         ];
       });
+
+      log("Connected");
     }
-    catch (error) {
+    catch(error) {
       log(error.toString());
     }
   }
@@ -181,7 +116,7 @@ class _HomeState extends State<Home> {
       ),
       body: PageView(
         controller: _pageController,
-        children: screen,
+        children: _screens,
         onPageChanged: _onPageChanged,
         physics: const NeverScrollableScrollPhysics(),
       ),
