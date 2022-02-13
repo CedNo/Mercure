@@ -2,13 +2,16 @@ import 'dart:async';
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:mercure/main.dart';
+import 'package:mercure/views/settings.dart';
 import 'package:mercure/views/statistiques.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  static String webSocketURL = "ws://192.168.0.27:65000";
 
   @override
   _HomeState createState() => _HomeState();
@@ -16,7 +19,10 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  var channel;
   late Socket socket;
+
+  bool channelIsConnected = false;
 
   //Le véhicule est en marche
   bool powerOn = false;
@@ -28,11 +34,7 @@ class _HomeState extends State<Home> {
   final PageController _pageController = PageController();
 
   //Les différents écrans
-  List<Widget> _screens = [
-    CircularProgressIndicator(),
-    CircularProgressIndicator(),
-    CircularProgressIndicator(),
-  ];
+  late List<Widget> _screens;
 
   //Allume ou éteind le véhicule
   void togglePower(bool isOn) {
@@ -40,6 +42,13 @@ class _HomeState extends State<Home> {
       //Start le véhicule
       powerOn = isOn;
     });
+
+    if(isOn){
+      channel.sink.add('PowerOn');
+    }
+    else {
+      channel.sink.add('PowerOff');
+    }
   }
 
   //Action déclancher lorsqu'on change de page
@@ -56,28 +65,47 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    _connectToSocket();
+    _screens = [
+      Center(child:
+        ElevatedButton(
+          child: Text('Connexion'),
+          onPressed: () {
+          _connectToSocket();
+        },
+      )),
+      Center(child: CircularProgressIndicator()),
+      Settings(),
+    ];
   }
 
   void _connectToSocket() async {
     log("Connecting");
 
+    setState(() {
+      _screens = [
+        Center(child: CircularProgressIndicator()),
+        Center(child: CircularProgressIndicator()),
+        Settings(),
+      ];
+    });
+
     try{
 
-      socket = await Socket.connect("192.168.0.27", 65000);
+      //socket = await Socket.connect("192.168.0.27", 65000);
+
+      channel = await WebSocketChannel.connect(
+        Uri.parse('ws://192.168.0.27:65000'),
+      );
 
       log("Connected");
-      log("Socket" + socket.toString());
 
-      setState(() {
-        _screens = [
-          Statistiques(socket: socket,),
-          Statistiques(socket: socket,),
-          Statistiques(socket: socket,),
-        ];
-      });
+      channelIsConnected = true;
 
-      log("Connected");
+      _screens = [
+        Statistiques(channel: channel,),
+        Center(child: CircularProgressIndicator()),
+        Settings(),
+      ];
     }
     catch(error) {
       log(error.toString());
@@ -102,10 +130,7 @@ class _HomeState extends State<Home> {
           // Switch pour allumer ou éteindre le véhicule
           Switch(
               value: powerOn,
-              onChanged: (bool value) {
-                togglePower(value);
-
-              },
+              onChanged: channelIsConnected ? (bool value) { togglePower(value); } : null,
             activeTrackColor: Colors.lightGreen,
             activeColor: Colors.green,
             inactiveThumbColor: Colors.red,

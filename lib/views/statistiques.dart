@@ -1,21 +1,22 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Statistiques extends StatefulWidget {
-  const Statistiques({Key? key, required this.socket}) : super(key: key);
+  var channel;
 
-  final Socket? socket;
+  Statistiques({Key? key, required this.channel}) : super(key: key);
 
   @override
-  _StatistiquesState createState() => _StatistiquesState(socket!);
+  _StatistiquesState createState() => _StatistiquesState(channel);
 }
 
 class _StatistiquesState extends State<Statistiques> with AutomaticKeepAliveClientMixin {
-  _StatistiquesState(Socket this.socket);
+  _StatistiquesState(this.channel);
 
-  final Socket socket;
+  var channel;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +25,10 @@ class _StatistiquesState extends State<Statistiques> with AutomaticKeepAliveClie
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(5.0),
-        child: GridView.count(
-          crossAxisCount: 2,
-          children: <Widget>[
+        child: Column(
+          children: [
             StreamBuilder(
-              stream: socket,
+              stream: channel.stream,
               builder: (context, snapshot) {
                 /// We are waiting for incoming data data
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -40,15 +40,25 @@ class _StatistiquesState extends State<Statistiques> with AutomaticKeepAliveClie
                 /// We have an active connection and we have received data
                 if (snapshot.connectionState == ConnectionState.active &&
                     snapshot.hasData) {
-                  return Center(
-                    child: Text(
-                      '${snapshot.data}}',
-                      style: const TextStyle(
-                        color: Colors.redAccent,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
+
+                  log(snapshot.data.toString());
+
+                  String _distance = snapshot.data.toString();
+
+                  return GridView.count(
+                    primary: false,
+                    padding: const EdgeInsets.all(20),
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
+                    crossAxisCount: 2,
+                    children: <Widget>[
+                      //Vitesse
+
+                      //Distance parcourue
+                      Center(
+                        child: Text(_distance),
                       ),
-                    ),
+                    ],
                   );
                 }
 
@@ -71,6 +81,11 @@ class _StatistiquesState extends State<Statistiques> with AutomaticKeepAliveClie
                 );
               },
             ),
+            TextButton(
+                onPressed: () {
+                  channel.sink.add('TEST');
+                },
+                child: const Text("Test")),
           ],
         ),
       ),
