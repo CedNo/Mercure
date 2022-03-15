@@ -5,5 +5,5 @@ Voiture autonome pour le cours de projet d'intégration phase II et Domaine d'ex
 - Raspberry pi 4 (min 4GB RAM)
 - Raspberry pi camera
 - IOT kit (Doit comprendre: cablage, résistance, sonar, accéléromètre)
-- voiture téléguidée
+- Voiture téléguidée
 - L298N Carte contrôleur de moteur
