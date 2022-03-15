@@ -16,3 +16,6 @@ Voiture autonome pour le cours de projet d'intégration phase II et Domaine d'ex
 - [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 - [Image Raspbian Buster](https://www.raspberrypi.com/software/operating-systems/)
 - [ROS](http://wiki.ros.org/ROSberryPi/Installing%20ROS%20Kinetic%20on%20the%20Raspberry%20Pi)
+- [OpenCV]()
+- [Mosquitto]()
+- [Fritzing](https://fritzing.org/download/)
