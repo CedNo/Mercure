@@ -16,8 +16,8 @@ Voiture autonome pour le cours de projet d'intégration phase II et Domaine d'ex
 - [Raspberry Pi Imager](https://www.raspberrypi.com/software/)
 - [Image Raspbian Buster](https://www.raspberrypi.com/software/operating-systems/)
 - [ROS](http://wiki.ros.org/ROSberryPi/Installing%20ROS%20Kinetic%20on%20the%20Raspberry%20Pi)
-- [OpenCV]()
-- [Mosquitto]()
+- [OpenCV](https://qengineering.eu/install-opencv-4.5-on-raspberry-pi-4.html)
+- [Mosquitto](https://xperimentia.com/2015/08/20/installing-mosquitto-mqtt-broker-on-raspberry-pi-with-websockets/)
 - [Fritzing](https://fritzing.org/download/)
 
 ## Exemple schéma branchement
