@@ -19,3 +19,12 @@ Voiture autonome pour le cours de projet d'intégration phase II et Domaine d'ex
 - [OpenCV]()
 - [Mosquitto]()
 - [Fritzing](https://fritzing.org/download/)
+
+## Exemple schéma branchement
+Voici la liste de nos branchements
+
+Pour voir plus en détail les branchements tous les fichiers sont à votre disposition dans le dossier **Schema branchement**. (Vous devez télécharger Fritzing pour les consulters)
+
+
+Branchement moteur pour les roues
+![Motor](/Schema%20branchement/Motor.png)
