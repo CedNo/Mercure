@@ -28,3 +28,12 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 
 - **Branchement moteur pour les roues**
 ![Motor](/Schema%20branchement/image/Motor.png)
+
+- **Branchement servo moteur pour la direction**
+![Servo_Motor](/Schema%20branchement/image/Servo_Motor.png)
+
+- **Branchement Sonar(capteur de distance)**
+![Sonar](/Schema%20branchement/image/Sonar.png)
+
+- **Branchement Photoresistor**
+![Photoresistor](/Schema%20branchement/image/Photoresistor.png)
