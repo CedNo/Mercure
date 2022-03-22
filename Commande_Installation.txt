@@ -87,5 +87,7 @@ ps -ef
 mosquitto -c /etc/mosquitto/mosquitto.conf 
 kill 26332
 sudo kill 26332
-mosquitto -c /etc/mosquitto/mosquitto.conf 
-history
+mosquitto -c /etc/mosquitto/mosquitto.conf
+wget https://github.com/Qengineering/Install-OpenCV-Raspberry-Pi-32-bits/raw/main/OpenCV-4-5-5.sh
+sudo chmod 755 ./OpenCV-4-5-5.sh
+./OpenCV-4-5-5.sh
