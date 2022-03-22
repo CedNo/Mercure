@@ -51,3 +51,12 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 - **Branchement Photoresistor**
 ![Photoresistor](/Schema%20branchement/image/Photoresistor.png)
 
+## Instruction pour l'installation et les branchements des pièces
+1. Désassembler la voiture téléguidée
+2. Tester chacune des pièces dans le Raspberry Pi pour s'assurer qu'ils fonctionnent bien
+3. Une fois les vérifications terminé trouver un emplacement pour votre Raspberry Pi
+4. Installer votre Raspberry Pi 
+5. Trouver un emplacement pour le sonar (capteur de distance) à l'avant du véhicule
+6. Faire les modifications nécessaire pour le mettre en place
+
+8. 
