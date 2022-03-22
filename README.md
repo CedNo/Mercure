@@ -27,4 +27,4 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 
 
 - **Branchement moteur pour les roues**
-![Motor](/Schema%20branchement/Motor.png)
+![Motor](/Schema%20branchement/image/Motor.png)
