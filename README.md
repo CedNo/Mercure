@@ -22,6 +22,17 @@ Voiture autonome pour le cours de projet d'intégration phase II et Domaine d'ex
 - [Mosquitto](https://xperimentia.com/2015/08/20/installing-mosquitto-mqtt-broker-on-raspberry-pi-with-websockets/)
 - [Fritzing](https://fritzing.org/download/)
 
+## Instruction téléchargement des logiciels
+(Les liens de téléchargement sont tous dans la section logiciel requis)
+1. Télécharger Raspberry Pi Imager 
+2. Télécharger l'image Raspbian Buster
+3. Flasher votre carte micro SD avec l'image de Buster avec Raspberry Pi Imager
+4. Insérer la carte dans votre Raspberry pi et faire la configuration initiale(On vous recommande fortement d'activer VNC et SSH)
+5. Faire les mises à jour
+6. Débuter l'installation de ROS (Vous pouvez vous référer directement au wiki de ROS sinon il y a votre disposition un fichier avec toutes les commandes que nous avons exécuté)
+7. Une fois que l'installation de ROS est complétée, installer OpenCV
+8. Une fois que l'installation d'OpenCV est complétée, installer Mosquitto
+
 ## Exemple schéma branchement
 Voici la liste de nos branchements
 
@@ -40,13 +51,3 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 - **Branchement Photoresistor**
 ![Photoresistor](/Schema%20branchement/image/Photoresistor.png)
 
-## Instruction téléchargement des logiciels
-(Les liens de téléchargement sont tous dans la section logiciel requis)
-1. Télécharger Raspberry Pi Imager 
-2. Télécharger l'image Raspbian Buster
-3. Flasher votre carte micro SD avec l'image de Buster avec Raspberry Pi Imager
-4. Insérer la carte dans votre Raspberry pi et faire la configuration initiale(On vous recommande fortement d'activer VNC et SSH)
-5. Faire les mises à jour
-6. Débuter l'installation de ROS (Vous pouvez vous référer directement au wiki de ROS sinon il y a votre disposition un fichier avec toutes les commandes que nous avons exécuté)
-7. Une fois que l'installation de ROS est complétée, installer OpenCV
-8. Une fois que l'installation d'OpenCV est complétée, installer Mosquitto
