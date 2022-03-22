@@ -48,15 +48,27 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 - **Branchement Sonar(capteur de distance)**
 ![Sonar](/Schema%20branchement/image/Sonar.png)
 
-- **Branchement Photoresistor**
+- **Branchement Photoresistor et LED**
 ![Photoresistor](/Schema%20branchement/image/Photoresistor.png)
 
 ## Instruction pour l'installation et les branchements des pièces
-1. Désassembler la voiture téléguidée
-2. Tester chacune des pièces dans le Raspberry Pi pour s'assurer qu'ils fonctionnent bien
+1. Désassembler la voiture téléguidée et retirer les composantes qui ne servent plus
+2. Tester chacune des pièces au Raspberry Pi pour s'assurer qu'ils fonctionnent bien
 3. Une fois les vérifications terminé trouver un emplacement pour votre Raspberry Pi
-4. Installer votre Raspberry Pi 
+4. Installer votre Raspberry Pi dans la voiture
 5. Trouver un emplacement pour le sonar (capteur de distance) à l'avant du véhicule
-6. Faire les modifications nécessaire pour le mettre en place
-
-8. 
+6. Faire les modifications nécessaire et le mettre en place
+![Sonar_inst](/Image_Mercure/sonar_inst.png)
+7. Trouver un emplacement pour le photoresistor
+8. Faire les modifications nécessaire et le mettre en place
+![Photoresistor_inst](/Image_Mercure/photoresistor_inst.png)
+9. Relier les lumières du véhicule avec le photoresistor vous pouvez vous fier au schéma des branchements pour comprendre le filage
+10. Identifier vos cables
+![Lumieres_inst](/Image_Mercure/lumieres_inst.png)
+11. Relier le servo-moteur au Raspberry Pi
+12. Trouver un emplacement pour carte L298N (Le L298N est une carte de moteur à double pont en H qui permet le contrôle de la vitesse et de la direction de deux moteurs à courant continu en même temps.)
+13. Relier le moteur de la voiture à la carte L298N en se fiant au schéma de branchement
+14. Brancher la batterie de la voiture à la carte L298N
+15. Installer l'accéléromètre sur la voiture
+16. Faire passer vos cables jusqu'au Raspberry Pi
+![acces_cable](/Image_Mercure/acces_cable.png)
