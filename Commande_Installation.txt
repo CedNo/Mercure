@@ -1,0 +1,91 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install python3
+sudo apt install python3-pip
+sudo apt-get install dirmngr
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O - | sudo apt-key add -
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential cmake
+sudo rosdep init
+rosdep update
+mkdir -p ~/ros_catkin_ws
+cd ~/ros_catkin_ws
+rosinstall_generator ros_comm --rosdistro kinetic --deps --wet-only --tar > kinetic-ros_comm-wet.rosinstall
+wstool init src kinetic-ros_comm-wet.rosinstall
+mkdir -p ~/ros_catkin_ws/external_src
+cd ~/ros_catkin_ws/external_src
+wget http://sourceforge.net/projects/assimp/files/assimp-3.1/assimp-3.1.1_no_test_models.zip/download -O assimp-3.1.1_no_test_models.zip
+unzip assimp-3.1.1_no_test_models.zip
+cd assimp-3.1.1
+cmake .
+make
+sudo make install
+cd ~/ros_catkin_ws
+rosdep install -y --from-paths src --ignore-src --rosdistro kinetic -r --os=debian:buster
+sudo apt remove libboost1.67-dev
+sudo apt autoremove
+sudo apt install -y libboost1.58-dev libboost1.58-all-dev
+sudo apt install -y g++-5 gcc-5
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 10
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 20
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 10
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 20
+sudo update-alternatives --install /usr/bin/cc cc /usr/bin/gcc 30
+sudo update-alternatives --set cc /usr/bin/gcc
+sudo update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++ 30
+sudo update-alternatives --set c++ /usr/bin/g++
+sudo apt install -y python-rosdep python-rosinstall-generator python-wstool python-rosinstall build-essential cmake
+sudo ./src/catkin/bin/catkin_make_isolated --install -DCMAKE_BUILD_TYPE=Release --install-space /opt/ros/kinetic
+echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+roscore
+sudo apt-get install mosquitto mosquitto-clients
+wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
+sudo apt-key add mosquitto-repo.gpg.key
+cd /etc/apt/sources.list.d/
+sudo wget http://repo.mosquitto.org/debian/mosquitto-jessie.list
+sudo apt-get update
+sudo apt-get install mosquitto
+sudo apt-get update
+sudo apt-get dist-upgrade
+sudo apt-get install cmake libssl-dev libwebsockets-dev uuid-dev libc-ares-dev
+mkdir temp
+sudo mkdir temp
+cd temp
+sudo wget http://c-ares.haxx.se/download/c-ares-1.12.0.tar.gz
+tar -xvf c-ares-1.12.0.tar.gz
+sudo tar -xvf c-ares-1.12.0.tar.gz
+cd c-ares-1.12.0
+./configure
+make -j4
+sudo make install
+cd ..
+sudo wget http://mosquitto.org/files/source/mosquitto-1.4.15.tar.gz
+tar xavf mosquitto-1.4.15.tar.gz
+sudo tar xavf mosquitto-1.4.15.tar.gz
+cd mosquitto-1.4.15
+cmake -DWITH_WEBSOCKETS=ON
+sudo make -j4
+sudo make install
+cd ~
+rm -r temp
+ls
+sudo useradd -r -m -d /var/lib/mosquitto -s /usr/sbin/nologin -g nogroup mosquitto
+/usr/local/etc/mosquitto/mosquitto.conf
+sudo /usr/local/etc/mosquitto/mosquitto.conf
+/usr/share/doc/mosquitto/examples/mosquitto.conf.gz
+cd /usr/share/doc/mosquitto/examples
+gunzip mosquitto.conf.gz
+sudo gunzip mosquitto.conf.gz
+sudo nano mosquitto.conf 
+cp mosquitto.conf /etc/mosquitto/
+sudo cp mosquitto.conf /etc/mosquitto/
+cd
+ps -ef
+mosquitto -c /etc/mosquitto/mosquitto.conf 
+kill 26332
+sudo kill 26332
+mosquitto -c /etc/mosquitto/mosquitto.conf 
+history
