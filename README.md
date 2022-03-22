@@ -23,7 +23,7 @@ Voiture autonome pour le cours de projet d'intégration phase II et Domaine d'ex
 ## Exemple schéma branchement
 Voici la liste de nos branchements
 
-Pour voir plus en détail les branchements, tous les fichiers sont à votre disposition dans le dossier **Schema branchement**. (Vous devez télécharger Fritzing pour les consulter)
+Pour voir plus en détail les branchements, tous les fichiers sont à votre disposition dans le dossier **Schema branchement**. (Vous devrez télécharger Fritzing pour les consulter)
 
 
 Branchement moteur pour les roues
