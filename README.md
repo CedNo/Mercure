@@ -26,5 +26,5 @@ Voici la liste de nos branchements
 Pour voir plus en détail les branchements, tous les fichiers sont à votre disposition dans le dossier **Schema branchement**. (Vous devrez télécharger Fritzing pour les consulter)
 
 
-Branchement moteur pour les roues
+- **Branchement moteur pour les roues**
 ![Motor](/Schema%20branchement/Motor.png)
