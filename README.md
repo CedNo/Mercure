@@ -27,9 +27,9 @@ Voiture autonome pour le cours de projet d'intégration phase II et Domaine d'ex
 1. Télécharger Raspberry Pi Imager 
 2. Télécharger l'image Raspbian Buster
 3. Flasher votre carte micro SD avec l'image de Buster avec Raspberry Pi Imager
-4. Insérer la carte dans votre Raspberry pi et faire la configuration initiale(On vous recommande fortement d'activer VNC et SSH)
+4. Insérer la carte dans votre Raspberry pi et faire la configuration initiale (On vous recommande fortement d'activer VNC et SSH)
 5. Faire les mises à jour
-6. Débuter l'installation de ROS (Vous pouvez vous référer directement au wiki de ROS sinon il y a votre disposition un fichier avec toutes les commandes que nous avons exécuté)
+6. Débuter l'installation de ROS (Vous pouvez vous référer directement au wiki de ROS sinon il y a votre disposition un fichier **Commande_Installation.txt** avec toutes les commandes que nous avons exécuté)
 7. Une fois que l'installation de ROS est complétée, installer OpenCV
 8. Une fois que l'installation d'OpenCV est complétée, installer Mosquitto
 
