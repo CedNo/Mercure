@@ -23,7 +23,7 @@ Voiture autonome pour le cours de projet d'intégration phase II et Domaine d'ex
 - [Fritzing](https://fritzing.org/download/)
 
 ## Instruction téléchargement des logiciels
-(Les liens de téléchargement sont tous dans la section logiciel requis)
+(Les liens de téléchargement sont dans la section logiciel requis)
 1. Télécharger Raspberry Pi Imager 
 2. Télécharger l'image Raspbian Buster
 3. Flasher votre carte micro SD avec l'image de Buster avec Raspberry Pi Imager
