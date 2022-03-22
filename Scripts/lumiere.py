@@ -37,6 +37,7 @@ try:
                 GPIO.output(led, False)
         if (val > 20000):
                 GPIO.output(led, True)
+                
 except KeyboardInterrupt:
     pass
 finally:
