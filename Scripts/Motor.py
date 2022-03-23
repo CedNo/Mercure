@@ -37,11 +37,11 @@ p1.start(50)
 
 
 def reset():
-    servo.angle = -15
+    servo.angle = -25
 
 
 def frontright():
-    servo.angle = -45
+    servo.angle = -80
 
 def frontleft():
     servo.angle = 45
