@@ -78,13 +78,13 @@ accel = [0]*3
 gyro = [0]*3
 
 broker = "localhost"
-client = paho.Client("client-publisher")
+client = paho.Client("accelerometre-publisher")
 
 def accelerometre():
     
     pub = rospy.Publisher('/accelerometre', Float32MultiArray, queue_size=10)
     rospy.init_node('accel_pub', anonymous=True)
-    rate = rospy.Rate(5) # 10hz
+    rate = rospy.Rate(5) # 5hz
 
     while not rospy.is_shutdown():
         accel = mpu.get_accel_data()
@@ -93,8 +93,8 @@ def accelerometre():
         #1=GaucheDroite 2=HautBas 3=  4= 5=VitesseHaut 6=VitesseAvant
         accel_data = Float32MultiArray()
         speed = gyro[1] / 131.0
-        angleY = accel[1]/16384.0
-        angleX = accel[0]/16384.0
+        angleY = accel[1]/16384.0 + 0.06
+        angleX = accel[0]/(-16384.0) + 0.16
         accel_data.data = [angleX, angleY, speed]
         
         strAccel = str(speed) + "@" + str(angleX) + "@" + str(angleY)
