@@ -84,3 +84,22 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 19. Trouver un emplacement à la camera
 20. Faire les modifications nécessaires et installer la caméra
 ![Camera_inst](/Image_Mercure/camera.jpg)
+
+## Code pour faire fonctionner la voiture
+**Prendre note que nous avons du suivre un cours de ROS sur Udemy pour comprendre le fonctionnement de l'environnement ROS**
+Une fois que votre Raspberry pi est prêt et que votre voiture est terminée. Vous pouvez télécharger les scripts dans le dossier Scripts et les mettres dans votre Raspberry pi.
+
+1. Pour faire fonctionner les scripts vous allez devoir vous créer un nouveau package ROS
+cd ~/ros_catkin_ws/src
+catkin_create_pkg dev_merc1 std_msgs rospy roscpp
+2. Ensuite, vous devez build le package
+cd ~/ros_catkin_ws/src
+catkin_make
+3. Ajouter votre workspace à votre environnement ROS
+. ~/ros_catkin_ws/devel/setup.bash
+4. Ajouter les scripts dans le dossier /src de votre package ROS
+cd ~/ros_catkin_ws/src/dev_merc1/src
+5. Assurer vous que vos scripts sont exécutable
+chmod +x nomDuScript.py
+
+
