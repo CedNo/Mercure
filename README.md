@@ -51,6 +51,10 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 - **Branchement Photoresistor et LED**
 ![Photoresistor](/Schema%20branchement/image/Photoresistor.png)
 
+- **Branchement Accéléromètre**
+
+![Accelerometre](/Schema%20branchement/image/accelerometre.png)
+
 ## Instruction pour l'installation et les branchements des pièces
 1. Désassembler la voiture téléguidée et retirer les composantes qui ne servent plus
 2. Tester chacune des pièces au Raspberry Pi pour s'assurer qu'ils fonctionnent bien
