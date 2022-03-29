@@ -56,13 +56,15 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 ![Accelerometre](/Schema%20branchement/image/accelerometre.png)
 
 ## Instruction pour l'installation et les branchements des pièces
-1. Désassembler la voiture téléguidée et retirer les composantes qui ne servent plus
-2. Tester chacune des pièces au Raspberry Pi pour s'assurer qu'ils fonctionnent bien
+1. Désassembler la voiture téléguidée et retirer toutes les composantes qui ne serviront plus
+2. Tester chacune des pièces au Raspberry Pi pour s'assurer qu'elles fonctionnent bien
 3. Une fois les vérifications terminé trouver un emplacement pour votre Raspberry Pi
-4. Installer votre Raspberry Pi dans la voiture
-5. Trouver un emplacement pour le sonar (capteur de distance) à l'avant du véhicule
-6. Faire les modifications nécessaire et le mettre en place
-![Sonar_inst](/Image_Mercure/sonar_inst.png)
+![Raspberry Pi_emplacement](/Image_Mercure/raspberryPi.jpg)
+5. Installer votre Raspberry Pi dans la voiture
+6. Trouver un emplacement pour le sonar (capteur de distance) à l'avant du véhicule
+7. Faire les modifications nécessaire, le mettre en place et installer vos fils
+8. Identifier vos cables
+![Sonar_inst](/Image_Mercure/sonar.jpg)
 7. Trouver un emplacement pour le photoresistor
 8. Faire les modifications nécessaire et le mettre en place
 ![Photoresistor_inst](/Image_Mercure/photoresistor_inst.png)
@@ -71,8 +73,14 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 ![Lumieres_inst](/Image_Mercure/lumieres_inst.png)
 11. Relier le servo-moteur au Raspberry Pi
 12. Trouver un emplacement pour carte L298N (Le L298N est une carte de moteur à double pont en H qui permet le contrôle de la vitesse et de la direction de deux moteurs à courant continu en même temps.)
-13. Relier le moteur de la voiture à la carte L298N en se fiant au schéma de branchement
-14. Brancher la batterie de la voiture à la carte L298N
-15. Installer l'accéléromètre sur la voiture
-16. Faire passer vos cables jusqu'au Raspberry Pi
-![acces_cable](/Image_Mercure/acces_cable.png)
+![L298N_inst](/Image_Mercure/L298N.jpg)
+14. Relier le moteur de la voiture à la carte L298N en se fiant au schéma de branchement
+15. Identifier vos cables
+16. Brancher la batterie de la voiture à la carte L298N
+17. Installer l'accéléromètre sur la voiture et installer vos cables
+![Accelerometre_inst](/Image_Mercure/accelerometre.jpg)
+18. Faire passer vos cables jusqu'au Raspberry Pi pour chaque module
+![Acces_cable](/Image_Mercure/cable_management.jpg)
+19. Trouver un emplacement à la camera
+20. Faire les modifications nécessaire et installer la camera
+![Camera_inst](/Image_Mercure/camera.jpg)
