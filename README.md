@@ -58,7 +58,7 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 ## Instruction pour l'installation et les branchements des pièces
 1. Désassembler la voiture téléguidée et retirer toutes les composantes qui ne serviront plus
 2. Tester chacune des pièces au Raspberry Pi pour s'assurer qu'elles fonctionnent bien
-3. Une fois les vérifications terminé trouver un emplacement pour votre Raspberry Pi
+3. Une fois les vérifications terminées trouver un emplacement pour votre Raspberry Pi
 ![Raspberry Pi_emplacement](/Image_Mercure/raspberryPi.jpg)
 5. Installer votre Raspberry Pi dans la voiture
 6. Trouver un emplacement pour le sonar (capteur de distance) à l'avant du véhicule
@@ -82,5 +82,5 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 18. Faire passer vos cables jusqu'au Raspberry Pi pour chaque module
 ![Acces_cable](/Image_Mercure/cable_management.jpg)
 19. Trouver un emplacement à la camera
-20. Faire les modifications nécessaire et installer la camera
+20. Faire les modifications nécessaires et installer la caméra
 ![Camera_inst](/Image_Mercure/camera.jpg)
