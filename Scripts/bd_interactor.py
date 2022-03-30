@@ -9,7 +9,7 @@ import datetime
 
 mydb = mysql.connector.connect(
           user="mercure",
-          password="MotDePasse,
+          password="MotDePasse",
           host="AdresseIpServer",
           port='PortServer',
           database="mercure"
