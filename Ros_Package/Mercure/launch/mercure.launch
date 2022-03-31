@@ -1,0 +1,9 @@
+<launch>
+  <node name="lumiere" pkg="dev_merc1" type="Lumieres.py" output="screen"/>
+  <node name="klaxon" pkg="dev_merc1" type="Klaxon.py" output="screen"/>
+  <node name="sonar_pub" pkg="dev_merc1" type="Sonar.py" output="screen"/>
+  <node name="camera_sub" pkg="dev_merc1" type="Camera.py" output="screen"/>
+  <node name="remote" pkg="dev_merc1" type="Remote.py" output="screen"/>
+  <node name="accel_pub" pkg="dev_merc1" type="Accel_pub.py" output="screen"/>
+  <node name="bd_interactor" pkg="dev_merc1" type="Bd_interactor.py" output="screen"/>
+</launch>
