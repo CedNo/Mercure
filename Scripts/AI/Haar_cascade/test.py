@@ -19,10 +19,8 @@ while True:
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
       
       
-    # Use minSize because for not 
-    # bothering with extra-small 
-    # dots that would look like STOP signs
-    stop_data = cv2.CascadeClassifier('stop_data.xml')
+    #Classifier .xml
+    stop_data = cv2.CascadeClassifier('stop.xml')
     
     
     #(img_converti en gray_scale, scaleVal, Minimum Neighbors)  
@@ -39,13 +37,12 @@ while True:
         # sign in the image
         for (x, y, width, height) in found:
               
-            # We draw a green rectangle around
-            # every recognized sign
+            #fait un rectangle alentour d'un stop
             cv2.rectangle(img_rgb, (x, y), 
                           (x + height, y + width), 
                           (0, 255, 0), 5)
     else:
-        print("no stop")
+        print("pas de stop")
         
         
     cv2.imshow("Test", img_rgb)
