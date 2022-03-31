@@ -84,6 +84,9 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 19. Trouver un emplacement à la camera
 20. Faire les modifications nécessaires et installer la caméra
 ![Camera_inst](/Image_Mercure/camera.jpg)
+21. Une fois les composantes installées remonter la voiture<br/>
+Voici notre résultat final
+![voiture final](/Image_Mercure/final.jpg)
 
 ## Code pour faire fonctionner la voiture
 **Prendre note que nous avons du suivre un cours de ROS sur Udemy pour comprendre le fonctionnement de l'environnement ROS**
