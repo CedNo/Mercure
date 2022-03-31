@@ -112,7 +112,7 @@ catkin_make<br/>
 7. Copier le fichier mercure.launch dans ce dossier (Facultatif si vous avez le package ROS)<br/>
 8. Rendre le ficher exécutable<br/>
   chmod +x mercure.launch<br/>
-9. Ensuite, vous devez mettre le fichier AI sur votre bureau
+9. Ensuite, vous devez mettre le fichier AI sur votre bureau disponible dans scripts sur Github
 9. Mainteant vous pouvez utiliser la commande suivante pour lancer les scripts<br/>
   roslaunch nom_package nom_ficher_launcher.launch<br/>
   roslaunch dev_merc1 mercure.launch<br/>
