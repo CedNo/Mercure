@@ -89,7 +89,7 @@ Pour voir plus en détail les branchements, tous les fichiers sont à votre disp
 **Prendre note que nous avons du suivre un cours de ROS sur Udemy pour comprendre le fonctionnement de l'environnement ROS**
 Une fois que votre Raspberry pi est prêt et que votre voiture est terminée. Vous pouvez télécharger les scripts dans le dossier Scripts et les mettres dans votre Raspberry pi.
 
-1. Pour faire fonctionner les scripts vous allez devoir vous créer un nouveau package ROS
+1. Pour faire fonctionner les scripts vous allez devoir vous créer un nouveau package ROS ou vous pouvez directement prendre notre package ROS dans github
 cd ~/ros_catkin_ws/src
 catkin_create_pkg dev_merc1 std_msgs rospy roscpp
 2. Ensuite, vous devez build le package
@@ -97,9 +97,26 @@ cd ~/ros_catkin_ws/src
 catkin_make
 3. Ajouter votre workspace à votre environnement ROS
 . ~/ros_catkin_ws/devel/setup.bash
-4. Ajouter les scripts dans le dossier /src de votre package ROS
+4. Ajouter les scripts dans le dossier /src de votre package ROS (Facultatif si vous avez le package ROS)
+cd ~/ros_catkin_ws/src/nom_package/src
 cd ~/ros_catkin_ws/src/dev_merc1/src
-5. Assurer vous que vos scripts sont exécutable
+5. Assurer vous que vos scripts sont exécutable dans le dossier src
+cd ~/ros_catkin_ws/src/dev_merc1/src
 chmod +x nomDuScript.py
+6. Créer un fichier ROS launch pour partir tous les scripts (Facultatif si vous avez le package ROS)
+cd ~/ros_catkin_ws/src/dev_merc1
+mkdir launch
+7. Copier le fichier mercure.launch dans ce dossier (Facultatif si vous avez le package ROS)
+8. Rendre le ficher exécutable
+chmod +x mercure.launch
+9. Utiliser la commande suivante pour lancer les scripts
+roslaunch nom_package nom_ficher_launcher.launch
+roslaunch dev_merc1 mercure.launch
+10. Maintenant que les scripts fonctionnent, il vous faut l'application MercureApp sur votre téléphone céllulaire pour faire fonctionner la voiture.
+https://github.com/CedNo/MercureApp
+11. Installer Android Studio
+12. Cloner le projet
+13. Installer l'appli sur votre voiture
+14. Amuser vous
 
 
